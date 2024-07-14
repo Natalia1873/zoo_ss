@@ -1,17 +1,18 @@
 from enum import Enum, auto
 
 class TipoEntrada(Enum):
-    BEBE = auto()
-    NIÑO = auto()
-    ADULTO = auto()
-    JUBILADO = auto()
-    NULO = auto()
+    BEBE = 0
+    NIÑO = 14
+    ADULTO = 23
+    JUBILADO = 18
+    
 
 class Entrada:
     def __init__(self, edad: int):
-        if edad < 0:
-            raise ValueError("La edad no puede ser negativa")
-        elif edad <= 2:
+        self.__validate_edad(edad)
+        self.__edad = edad
+        
+        if edad <= 2:
             self.tipo = TipoEntrada.BEBE
             self.precio = 0
         elif edad < 13:
@@ -23,6 +24,10 @@ class Entrada:
         else:
             self.tipo = TipoEntrada.JUBILADO
             self.precio = 18
+
+    def __validate_edad(self, edad):
+        if edad < 0:
+            raise ValueError("La edad no debe ser negativa")
 
 class Grupo_Entrada:
     def __init__(self):
