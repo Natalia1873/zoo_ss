@@ -29,10 +29,10 @@ class Grupo_Entrada:
         self.total = 0
         self.num_entradas = 0
         self.tipos_entrada = {
-            TipoEntrada.BEBE: 0,
-            TipoEntrada.NIÑO: 0,
-            TipoEntrada.ADULTO: 0,
-            TipoEntrada.JUBILADO: 0   
+            TipoEntrada.BEBE: {"candidad": 0, "precio": 0},
+            TipoEntrada.NIÑO: {"candidad": 0, "precio": 14},
+            TipoEntrada.ADULTO: {"candidad": 0, "precio": 23},
+            TipoEntrada.JUBILADO: {"candidad": 0, "precio": 18}   
         }
 
     def add_entrada(self, edad):
@@ -44,7 +44,10 @@ class Grupo_Entrada:
         self.num_entradas += 1
         self.total += nueva_entrada.precio
 
-        self.tipos_entrada[nueva_entrada.tipo] += 1
+        self.tipos_entrada[nueva_entrada.tipo]["candidad"] += 1
 
-    def cantidad_entradas_por_tipo(self, tipo: TipoEntrada):
-        return self.tipos_entrada[tipo]
+    def cantidad_entradas_por_tipo(self, tipo: TipoEntrada) -> int:
+        return self.tipos_entrada[tipo]["candidad"]
+    
+    def subtotal_tipo(self, tipo: TipoEntrada) -> int:
+        return self.tipos_entrada[tipo]["candidad"] * self.tipos_entrada[tipo]["precio"]
