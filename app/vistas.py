@@ -13,7 +13,7 @@
 10    EDAD: 
 11    CONF
 """
-from modelos import Grupo_Entrada, TipoEntrada
+from app.modelos import Grupo_Entrada, TipoEntrada
 from simple_screen import locate, Print, cls, Screen_manager, Input
 
 class VistaGrupo:
