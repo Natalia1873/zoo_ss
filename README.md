@@ -1,4 +1,4 @@
-# Zoo Ticketing System**
+# Zoo Ticketing System
 
 A command-line interface application for managing zoo entrance tickets and visitor groups.
 
